@@ -1,14 +1,14 @@
 package model;
 
 public class Participant extends Person {
-
 	private Participant prev;
 	private Participant next;
-	
-	public Participant(String name, int id, String country) {
-		super(name, id, country);
-	}
 
+	public Participant(String id, String firstname, String lastname, String email, String gender, String country,
+			String img, String birthDate) {
+		super(id, firstname, lastname, email, gender, country, img, birthDate);
+	}
+	
 	public Participant getPrev() {
 		return prev;
 	}
@@ -36,13 +36,29 @@ public class Participant extends Person {
 		}
 	}
 	
-	public Participant searchParticipant(int id) {
+	public Participant searchParticipant(String id) {
 		
-		if (getId() == id)
+		if (getId().equals(id))
 			return this; 
 		else 
 			return next != null ? next.searchParticipant(id) : null;
 		
+	}
+	
+	public boolean findId(String id) {
+		
+		if (getId().equals(id))
+			return true; 
+		else 
+			return next != null ? next.findId(id) : false;
+		
+	}
+	
+	public static Participant toParticipant(Spectator s) {
+		Participant retp = new Participant(s.getId(), s.getFirstname(), s.getLastname(),
+				s.getEmail(), s.getGender(), s.getCountry(), s.getImg(), s.getBirthDate());
+		
+		return retp;
 	}
 	
 }

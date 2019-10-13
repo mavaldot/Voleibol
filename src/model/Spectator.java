@@ -1,14 +1,15 @@
 package model;
 
-public class Spectator extends Person {
+public class Spectator extends Person implements Comparable<Spectator>{
 
 	private Spectator left;
 	private Spectator right;
-	
-	public Spectator(String name, int id, String country) {
-		super(name, id, country);
-	}
 
+	public Spectator(String id, String firstname, String lastname, String email, String gender, String country,
+			String img, String birthDate) {
+		super(id, firstname, lastname, email, gender, country, img, birthDate);
+	}
+	
 	public Spectator getLeft() {
 		return left;
 	}
@@ -27,7 +28,7 @@ public class Spectator extends Person {
 
 	public void addSpectator(Spectator s) throws DuplicateIdException {
 		
-		if (getId() < s.getId()) {
+		if (this.compareTo(s) < 0) {
 			
 			if (right == null)
 				right = s;
@@ -35,7 +36,7 @@ public class Spectator extends Person {
 				right.addSpectator(s);
 			
 		}
-		else if (getId() > s.getId()) {
+		else if (this.compareTo(s) > 0) {
 			
 			if (left == null)
 				left = s;
@@ -43,20 +44,26 @@ public class Spectator extends Person {
 				left.addSpectator(s);		
 		}
 		else
-			throw new DuplicateIdException("That ID already exists");
+			throw new DuplicateIdException("That ID already exists!");
 			
 	}
 
-	public Spectator searchSpectator(int id) {
+	public Spectator searchSpectator(String id) {
 		
-		if (getId() == id)
+		if (getId().equals(id))
 			return this;
-		else if (getId() > id)
+		else if (getId().compareTo(id) > 0)
 			return left != null ?  left.searchSpectator(id) : null;
 		else 
 			return right != null ?  right.searchSpectator(id) : null;
 
 		
+	}
+	
+	public int compareTo(Spectator s) {
+		
+		int retv = getId().compareTo(s.getId());
+		return retv;
 	}
 	
 }

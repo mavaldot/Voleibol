@@ -53,9 +53,9 @@ public class Spectator extends Person implements Comparable<Spectator>{
 		if (getId().equals(id))
 			return this;
 		else if (getId().compareTo(id) > 0)
-			return left != null ?  left.searchSpectator(id) : null;
+			return (left != null) ?  left.searchSpectator(id) : null;
 		else 
-			return right != null ?  right.searchSpectator(id) : null;
+			return (right != null) ?  right.searchSpectator(id) : null;
 
 		
 	}

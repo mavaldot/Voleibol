@@ -36,12 +36,13 @@ public class Participant extends Person {
 		}
 	}
 	
+	
 	public Participant searchParticipant(String id) {
 		
 		if (getId().equals(id))
 			return this; 
 		else 
-			return next != null ? next.searchParticipant(id) : null;
+			return (next != null) ? next.searchParticipant(id) : null;
 		
 	}
 	
@@ -49,8 +50,8 @@ public class Participant extends Person {
 		
 		if (getId().equals(id))
 			return true; 
-		else 
-			return next != null ? next.findId(id) : false;
+		
+		return (next != null) ? next.findId(id) : false;
 		
 	}
 	

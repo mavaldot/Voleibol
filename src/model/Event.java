@@ -5,14 +5,16 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 public class Event {
 
 	private Participant first;
 	private Spectator root;
+	private Random rand;
 	
 	public Event() {
-		
+		rand = new Random();
 	}
 	
 	public String loadSpectators(String path) {
@@ -38,6 +40,9 @@ public class Event {
 				
 				addSpectator(new Spectator(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]));
 				
+				if (rand.nextInt(2) == 1)
+					addParticipant(new Participant(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]));
+				
 				
 			}
 		}
@@ -47,11 +52,12 @@ public class Event {
 		catch (IOException e) {
 			msg = "ERROR. There was problem reading the file";
 		}
-		catch (Exception e) {
+		catch (IndexOutOfBoundsException e) {
 			//
 		}
-		
-		System.out.println();
+		catch (Exception e) {
+			msg = "There might have been an error while reading the file";
+		}
 		
 		return msg;
 		
@@ -100,7 +106,7 @@ public class Event {
 		
 		double t1 = System.nanoTime();
 		
-		if ((s = root.searchSpectator(id)) != null) {
+		if ( root != null && (s = root.searchSpectator(id)) != null) {
 			result += "SPECTATOR FOUND:\n" + s.getInfo();
 		}
 		else
@@ -122,7 +128,7 @@ public class Event {
 		
 		double t1 = System.nanoTime();
 		
-		if ((p = first.searchParticipant(id)) != null) {
+		if (first != null && (p = first.searchParticipant(id)) != null) {
 			result += "PARTICIPANT FOUND:\n" + p.getInfo();
 		}
 		else

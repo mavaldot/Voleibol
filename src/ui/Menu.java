@@ -3,9 +3,6 @@ package ui;
 import java.util.Scanner;
 
 import model.Event;
-import model.Participant;
-import model.Spectator;
-import model.Person;
 
 public class Menu {
 
@@ -63,10 +60,10 @@ public class Menu {
 
 			case 4:
 				
+				
 				break;
 				
 			case 5:
-				
 				
 				
 				break;

@@ -10,11 +10,11 @@ class SpectatorTest {
 	
 	private void loadScene1() {
 		
-		s = new Spectator[6];
+		s = new Spectator[5	];
 		s[0] = new Spectator("32-1234", "Johan", "Giraldo", "jg@gmail.com", "Male", "Colombia", "johan.jpg", "1999/12/25");
-		s[1] = new Spectator("45-5134", "Esteban", "Ariza", "ea@gmail.com", "Male", "Japon", "img2.jpg", "1995/11/21");
+		s[1] = new Spectator("45-5134", "Esteban", "Ariza", "ea@gmail.com", "Male", "Japan", "img2.jpg", "1995/11/21");
 		s[2] = new Spectator("12-1654", "Esteban", "Yusunguaira", "ey@gmail.com", "Female", "China", "rere.jpg", "1992/07/06");
-		s[3] = new Spectator("54-5234", "Jhun", "Kim", "jk@gmail.com", "Male", "Corea del Sur", "kim.jpg", "2000/01/10");
+		s[3] = new Spectator("54-5234", "Jhun", "Kim", "jk@gmail.com", "Male", "South Korea", "kim.jpg", "2000/01/10");
 		s[4] = new Spectator("04-1834", "Juan", "Ossa", "jo@gmail.com", "Female", "Haiti", "ossa.jpg", "1997/04/06");
 	}
 
@@ -34,7 +34,7 @@ class SpectatorTest {
 			fail();
 		} 
 		catch (DuplicateIdException e) {
-			// 
+			// 	
 		}
 		
 		assertNotNull(root.getLeft());

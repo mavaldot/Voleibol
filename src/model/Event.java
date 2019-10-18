@@ -35,15 +35,15 @@ public class Event {
 				String[] data = line.split(",");
 				
 				Spectator s = new Spectator(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
+
+				//System.out.println(s.getInfo());
 				
-				System.out.println(s.getInfo());
-				
-				addSpectator(new Spectator(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]));
+				addSpectator(s);
 				
 				if (rand.nextInt(2) == 1)
 					addParticipant(new Participant(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]));
 				
-				
+				addParticipant(new Participant(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]));
 			}
 		}
 		catch (FileNotFoundException e) {
@@ -90,7 +90,8 @@ public class Event {
 		else {
 			try {
 				root.addSpectator(s);
-			} catch (DuplicateIdException e) {
+			} 
+			catch (DuplicateIdException e) {
 				success = false;
 			}
 		}
@@ -140,6 +141,37 @@ public class Event {
 		
 		return result;
 		
+	}
+	
+	public String showParticipants(String country) {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		if (first != null) {
+			
+			Participant next = first.getNext();
+			
+			while (next != null) {
+				
+				if (next.getCountry().equals(country))
+					sb.append(next.getData());
+
+				next = next.getNext();
+			}
+			
+		}
+		
+		String ret = sb.toString();
+		
+		return ret;
+		
+	}
+	
+	public String showSpectators(String country) {
+		
+		String ret = root.printData(0, country);
+		
+		return ret;
 	}
 	
 }

@@ -18,18 +18,13 @@ public class Menu {
 		
 		boolean running = true;
 		
-		System.out.println("ARBOL");
-		System.out.println("++HOLA");
-		System.out.println("+ ++LEFT");
-		System.out.println("++");
-		
 		while (running) {
 			
-			System.out.println("\nWelcome to the voleyball championship!");
+			System.out.println("\nWelcome to the voleyball championship!\n");
 			System.out.println("Please pick an option:");
 			System.out.println("1. Read the file with the spectators");
-			System.out.println("2. Search a spectator");
-			System.out.println("3. Search a participant");
+			System.out.println("2. Search for a spectator");
+			System.out.println("3. Search for a participant");
 			System.out.println("4. Print all of a country's spectators");
 			System.out.println("5. Print all of a country's participants");
 			System.out.println("6. Exit");
@@ -60,12 +55,14 @@ public class Menu {
 
 			case 4:
 				
-				
+				String specCountry = askString("Please enter the country of the spectators");
+				System.out.println(e.showSpectators(specCountry));
 				break;
 				
 			case 5:
 				
-				
+				String partCountry = askString("Please enter the country of the participants");
+				System.out.println(e.showParticipants(partCountry));
 				break;
 				
 			case 6:

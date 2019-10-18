@@ -102,5 +102,31 @@ public class Person {
 		return retv;
 	}
 	
+	public String getData() {
+		
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("\n");
+		sb.append(id);
+		sb.append("\n");
+		sb.append(firstname);
+		sb.append("\n");
+		sb.append(lastname);
+		sb.append("\n");
+		sb.append(email);
+		sb.append("\n");
+		sb.append(gender);
+		sb.append("\n");
+		sb.append(country);
+		sb.append("\n");
+		sb.append(img);
+		sb.append("\n");
+		sb.append(birthDate);
+		sb.append("\n");
+	
+		String ret = sb.toString();
+		
+		return ret;
+	}
 	
 }

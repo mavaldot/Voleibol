@@ -41,8 +41,8 @@ public class Participant extends Person {
 		
 		if (getId().equals(id))
 			return this; 
-		else 
-			return (next != null) ? next.searchParticipant(id) : null;
+
+		return (next != null) ? next.searchParticipant(id) : null;
 		
 	}
 	
@@ -61,5 +61,6 @@ public class Participant extends Person {
 		
 		return retp;
 	}
+	
 	
 }

@@ -17,6 +17,14 @@ public class Event {
 		rand = new Random();
 	}
 	
+	public Spectator getRoot() {
+		return root;
+	}
+	
+	public Participant getFirst() {
+		return first;
+	}
+	
 	public String loadSpectators(String path) {
 		
 		String msg = "The spectators where loaded successfully!";
@@ -35,15 +43,12 @@ public class Event {
 				String[] data = line.split(",");
 				
 				Spectator s = new Spectator(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]);
-
-				//System.out.println(s.getInfo());
 				
 				addSpectator(s);
 				
 				if (rand.nextInt(2) == 1)
 					addParticipant(new Participant(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]));
-				
-				addParticipant(new Participant(data[0],data[1],data[2],data[3],data[4],data[5],data[6],data[7]));
+
 			}
 		}
 		catch (FileNotFoundException e) {
@@ -62,7 +67,6 @@ public class Event {
 		return msg;
 		
 	}
-	
 	
 	
 	public boolean addParticipant(Participant p) {
@@ -168,6 +172,10 @@ public class Event {
 	}
 	
 	public String showSpectators(String country) {
+		
+		if (root == null) {
+			return null;
+		}
 		
 		String ret = root.printData(0, country);
 		

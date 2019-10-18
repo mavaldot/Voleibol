@@ -55,12 +55,5 @@ public class Participant extends Person {
 		
 	}
 	
-	public static Participant toParticipant(Spectator s) {
-		Participant retp = new Participant(s.getId(), s.getFirstname(), s.getLastname(),
-				s.getEmail(), s.getGender(), s.getCountry(), s.getImg(), s.getBirthDate());
-		
-		return retp;
-	}
-	
 	
 }

@@ -69,57 +69,28 @@ public class Spectator extends Person implements Comparable<Spectator>{
 		return retv;
 	}
 	
-	public boolean deleteSpectator(Spectator s) throws DuplicateIdException {
-		
-		if (left != null) {
-			if (left.equals(s)) {
-				addSpectator(left.getLeft());
-				addSpectator(left.getRight());
-				left = null;
-				return true;
-			}
-			else if (left.deleteSpectator(s))
-				return true;
-
-		}
-		
-		if (right != null) {	
-			if (right.equals(s)) {
-				addSpectator(right.getLeft());
-				addSpectator(right.getRight());
-				right = null;
-				return true;
-			}
-			else if (right.deleteSpectator(s))
-				return true;
-		}
-		
-		return false;
-	}
-	
 	public String printData(int lvl, String country) {
 		
 		StringBuilder sb = new StringBuilder();
 		
-		if (getCountry().equals(country)) {
-			sb.append("\n");
-			sb.append(printSpaces(lvl));
-			sb.append(getId());
-			sb.append(printSpaces(lvl));
-			sb.append(getFirstname());
-			sb.append(printSpaces(lvl));
-			sb.append(getLastname());
-			sb.append(printSpaces(lvl));
-			sb.append(getEmail());
-			sb.append(printSpaces(lvl));
-			sb.append(getGender());
-			sb.append(printSpaces(lvl));
-			sb.append(getCountry());
-			sb.append(printSpaces(lvl));
-			sb.append(getImg());
-			sb.append(printSpaces(lvl));
-			sb.append(getBirthDate());
-		}
+		sb.append("\n");
+		sb.append(printSpaces(lvl));
+		sb.append(getId());
+		sb.append(printSpaces(lvl));
+		sb.append(getFirstname());
+		sb.append(printSpaces(lvl));
+		sb.append(getLastname());
+		sb.append(printSpaces(lvl));
+		sb.append(getEmail());
+		sb.append(printSpaces(lvl));
+		sb.append(getGender());
+		sb.append(printSpaces(lvl));
+		sb.append(getCountry());
+		sb.append(printSpaces(lvl));
+		sb.append(getImg());
+		sb.append(printSpaces(lvl));
+		sb.append(getBirthDate());
+		
 		
 		if (left != null) 
 			sb.append(left.printData(lvl+1, country));
@@ -136,13 +107,18 @@ public class Spectator extends Person implements Comparable<Spectator>{
 		
 		StringBuilder sb = new StringBuilder();
 		
-		int spaces = lvl * 5;
+		int spaces = lvl * 5 - 5;
 		
 		sb.append("\n");
+		
+		
 		
 		for (int i = 0; i < spaces; i++) {
 			sb.append(" ");	
 		}
+		
+		sb.append("|   ");
+		
 		
 		String ret = sb.toString();
 		

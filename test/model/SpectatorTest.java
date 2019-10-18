@@ -48,4 +48,29 @@ class SpectatorTest {
 		
 	}
 	
+	@Test
+	public void testSearchSpectator() {
+		
+		loadScene1();
+		
+		Spectator root = s[0];
+		
+		try {
+			root.addSpectator(s[1]);
+			root.addSpectator(s[2]);
+			root.addSpectator(s[3]);
+			root.addSpectator(s[4]);
+		}
+		catch (DuplicateIdException e) {
+			fail();
+		}
+		
+		assertEquals(root.searchSpectator("32-1234"), s[0]);
+		assertEquals(root.searchSpectator("45-5134"), s[1]);
+		assertEquals(root.searchSpectator("12-1654"), s[2]);
+		assertEquals(root.searchSpectator("54-5234"), s[3]);
+		assertEquals(root.searchSpectator("04-1834"), s[4]);
+		
+	}
+	
 }
